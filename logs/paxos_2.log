@@ -1,0 +1,8 @@
+May 14 10:01:35.110 INFO Ballot Leader Election componentMay 14 10:02:06.572 DEBG Newly elected leader: Ballot { n: 0, priority: 0, pid: 0 }
+May 14 10:02:22.173 DEBG Newly elected leader: Ballot { n: 0, priority: 0, pid: 2 }
+May 14 10:02:22.182 DEBG Handling promise from 1 in Prepare phase
+May 14 10:02:37.799 DEBG Newly elected leader: Ballot { n: 1, priority: 0, pid: 1 }
+majority of heartbeats [(Ballot { n: 0, priority: 0, pid: 1 }, true)]
+May 14 10:02:22.186 DEBG BLE 2, New Leader elected: Ballot { n: 0, priority: 0, pid: 2 }
+May 14 10:02:37.822 DEBG Received a majority of heartbeats [(Ballot { n: 1, priority: 0, pid: 1 }, true)]
+May 14 10:02:37.829 DEBG BLE 2, New Leader elected: Ballot { n: 1, priority: 0, pid: 1 }

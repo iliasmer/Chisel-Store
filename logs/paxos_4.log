@@ -1,0 +1,34 @@
+May 14 09:53:02.774 INFO Ballot Leader Election componentMay 14 09:53:34.120 DEBG Newly elected leader: Ballot { n: 0, priority: 0, pid: 1 }
+May 14 09:53:49.724 DEBG Newly elected leader: Ballot { n: 0, priority: 0, pid: 4 }
+May 14 09:53:49.754 DEBG Handling promise from 1 in Prepare phase
+May 14 09:54:05.424 DEBG Newly elected leader: Ballot { n: 1, priority: 0, pid: 1 }
+ajority of heartbeats [(Ballot { n: 0, priority: 0, pid: 1 }, true)]
+May 14 09:53:49.731 DEBG BLE 4, New Leader elected: Ballot { n: 0, priority: 0, pid: 4 }
+May 14 09:54:05.427 DEBG Received a majority of heartbeats [(Ballot { n: 1, priority: 0, pid: 1 }, true)]
+May 14 09:54:05.429 DEBG BLE 4, New Leader elected: Ballot { n: 1, priority: 0, pid: 1 }
+May 14 09:54:21.081 DEBG Received a majority of heartbeats [(Ballot { n: 1, priority: 0, pid: 1 }, true)]
+May 14 09:54:36.765 DEBG Received a majority of heartbeats [(Ballot { n: 1, priority: 0, pid: 1 }, true)]
+May 14 09:54:52.449 DEBG Received a majority of heartbeats [(Ballot { n: 1, priority: 0, pid: 1 }, true)]
+May 14 09:55:08.192 DEBG Received a majority of heartbeats [(Ballot { n: 1, priority: 0, pid: 1 }, true)]
+May 14 09:55:23.893 DEBG Received a majority of heartbeats [(Ballot { n: 1, priority: 0, pid: 1 }, true)]
+May 14 09:55:39.623 DEBG Received a majority of heartbeats [(Ballot { n: 1, priority: 0, pid: 1 }, true)]
+May 14 09:55:55.296 DEBG Received a majority of heartbeats [(Ballot { n: 1, priority: 0, pid: 1 }, true)]
+May 14 09:56:10.989 DEBG Received a majority of heartbeats [(Ballot { n: 1, priority: 0, pid: 1 }, true)]
+May 14 09:56:26.767 DEBG Received a majority of heartbeats [(Ballot { n: 1, priority: 0, pid: 1 }, true)]
+May 14 09:56:42.424 DEBG Received a majority of heartbeats [(Ballot { n: 1, priority: 0, pid: 1 }, true)]
+May 14 09:56:58.184 DEBG Received a majority of heartbeats [(Ballot { n: 1, priority: 0, pid: 1 }, true)]
+May 14 09:57:13.821 DEBG Received a majority of heartbeats [(Ballot { n: 1, priority: 0, pid: 1 }, true)]
+May 14 09:57:29.344 DEBG Received a majority of heartbeats [(Ballot { n: 1, priority: 0, pid: 1 }, true)]
+May 14 09:57:45.030 DEBG Received a majority of heartbeats [(Ballot { n: 1, priority: 0, pid: 1 }, true)]
+May 14 09:58:00.648 DEBG Received a majority of heartbeats [(Ballot { n: 1, priority: 0, pid: 1 }, true)]
+May 14 09:58:16.296 DEBG Received a majority of heartbeats [(Ballot { n: 1, priority: 0, pid: 1 }, true)]
+May 14 09:58:32.022 DEBG Received a majority of heartbeats [(Ballot { n: 1, priority: 0, pid: 1 }, true)]
+May 14 09:58:47.589 DEBG Received a majority of heartbeats [(Ballot { n: 1, priority: 0, pid: 1 }, true)]
+May 14 09:59:03.253 DEBG Received a majority of heartbeats [(Ballot { n: 1, priority: 0, pid: 1 }, true)]
+May 14 09:59:19.165 DEBG Received a majority of heartbeats [(Ballot { n: 1, priority: 0, pid: 1 }, true)]
+May 14 09:59:34.911 DEBG Received a majority of heartbeats [(Ballot { n: 1, priority: 0, pid: 1 }, true)]
+May 14 09:59:50.534 DEBG Received a majority of heartbeats [(Ballot { n: 1, priority: 0, pid: 1 }, true)]
+May 14 10:00:06.201 DEBG Received a majority of heartbeats [(Ballot { n: 1, priority: 0, pid: 1 }, true)]
+May 14 10:00:21.838 DEBG Received a majority of heartbeats [(Ballot { n: 1, priority: 0, pid: 1 }, true)]
+May 14 10:00:37.535 DEBG Received a majority of heartbeats [(Ballot { n: 1, priority: 0, pid: 1 }, true)]
+May 14 10:00:53.260 DEBG Received a majority of heartbeats [(Ballot { n: 1, priority: 0, pid: 1 }, true)]

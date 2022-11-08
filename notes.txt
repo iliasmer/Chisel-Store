@@ -1,0 +1,56 @@
+pub fn run(&self) {
+        loop {
+            if *self.halt.lock().unwrap() {
+                break
+            }
+
+            let mut sequence_paxos = self.sequence_paxos.lock().unwrap();
+            let mut ballot_leader_election = self.ballot_leader_election.lock().unwrap();
+
+            if let Some(leader) = ballot_leader_election.tick() {
+                // a new leader is elected, pass it to SequencePaxos.
+                sequence_paxos.handle_leader(leader);
+            }
+
+            // check incoming messages
+
+            match self.sp_notifier_rx.try_recv() {
+                Ok(msg) => {
+                    sequence_paxos.handle(msg);
+                },
+                _ => {},
+            };
+
+
+            match self.ble_notifier_rx.try_recv() {
+                Ok(msg) => {
+                    ballot_leader_election.handle(msg);
+                },
+                _ => {},
+            };
+
+            // send outgoing messages
+
+            for out_msg in sequence_paxos.get_outgoing_msgs() {
+                let receiver = out_msg.to;
+                self.transport.send_sp(receiver, out_msg);
+            }
+
+            for out_msg in ballot_leader_election.get_outgoing_msgs() {
+                let receiver = out_msg.to;
+                self.transport.send_ble(receiver, out_msg);
+            }
+
+            sleep(Duration::from_millis(10));
+        }
+    }
+
+
+
+OmniPaxos  === Little_Raft
+
+?          === ballot_leader_election.rs
+
+message.rs === messages.rs
+
+replica.rs === sequence_paxos.rs

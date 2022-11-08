@@ -1,0 +1,178 @@
+syntax = "proto3";
+
+package proto;
+
+message Void {
+}
+
+message Query {
+    string sql = 1;
+}
+
+message QueryResults {
+    repeated QueryRow rows = 1;
+}
+
+message QueryRow {
+    repeated string values = 1;
+}
+
+message BallotRpc {
+    uint32 n = 1;
+    uint64 priority = 2;
+    uint64 pid = 3;
+}
+
+message HeartbeatRequestRpc {
+    uint32 round = 1;
+}
+
+message HeartbeatReplyRpc {
+    uint32 round = 1;
+    BallotRpc ballot = 2;
+    bool majority_connected = 3;
+}
+
+message BleMessageRpc {
+    uint64 from = 1;
+    uint64 to = 2;
+    oneof msg {
+        HeartbeatRequestRpc heartbeat_req = 3;
+        HeartbeatReplyRpc heartbeat_rep = 4;
+    }
+}
+
+message StoreCommandRpc {
+    uint64 id = 1; 
+    string sql = 2;
+}
+
+
+message SyncItemRpc {
+    oneof item {
+        Entries entries = 1;
+        Snapshot snapshot = 2;
+        None none = 3;
+    }
+    message Entries {
+        repeated StoreCommandRpc vec = 1;
+    }
+    enum Snapshot {
+        Complete = 0;
+        Delta = 1;
+        Phantom = 2;
+    }
+    message None {
+    }
+}
+
+message PrepareRpc {
+    BallotRpc n = 1; 
+    uint64 ld = 2; 
+    BallotRpc n_accepted = 3; 
+    uint64 la = 4; 
+}
+
+message StopSignObject {
+    uint32 config_id = 1;
+    repeated uint64 nodes = 2;
+    optional Metadata metadata = 3;
+    message Metadata {
+        repeated uint32 vec = 1;
+    }
+}
+
+message PromiseRpc {
+    BallotRpc n = 1; 
+    BallotRpc n_accepted = 2; 
+    optional SyncItemRpc sync_item = 3; 
+    uint64 ld = 4;
+    uint64 la = 5;
+    optional StopSignObject stopsign = 6;
+}
+
+message AcceptSyncRpc {
+    BallotRpc n = 1; 
+    SyncItemRpc sync_item = 2; 
+    uint64 sync_idx = 3; 
+    optional uint64 decide_idx = 4; 
+    optional StopSignObject stopsign = 5;
+}
+
+message FirstAcceptRpc {
+    BallotRpc n = 1;
+    repeated StoreCommandRpc entries = 2;
+}
+
+message AcceptDecideRpc {
+    BallotRpc n = 1;
+    uint64 ld = 2;
+    repeated StoreCommandRpc entries = 3; 
+}
+
+message AcceptedRpc {
+    BallotRpc n = 1; 
+    uint64 la = 2; 
+}
+
+message DecideRpc {
+    BallotRpc n = 1;
+    uint64 ld = 2; 
+}
+
+message AcceptStopSignRpc {
+    BallotRpc n = 1;
+    StopSignObject ss = 2; 
+}
+
+message AcceptedStopSignRpc {
+    BallotRpc n = 1; 
+}
+
+message DecideStopSignRpc {
+    BallotRpc n = 1;
+}
+
+message CompactionRpc {
+    oneof compaction {
+        Trim trim = 1;
+        uint64 snapshot = 2;
+    }
+    message Trim {
+        optional uint64 trim = 1;
+    }
+}
+
+message ProposalForwardRpc {
+    repeated StoreCommandRpc entries = 1;
+}
+
+message PrepareReqRpc {
+}
+
+message PaxosMsgRpc {
+    uint64 from = 1;
+    uint64 to = 2;
+    oneof msg {
+        PrepareReqRpc prepare_req = 3;
+        PrepareRpc prepare = 4;
+        PromiseRpc promise = 5;
+        AcceptSyncRpc accept_sync = 6;
+        FirstAcceptRpc first_accept = 7;
+        AcceptDecideRpc accept_decide = 8;
+        AcceptedRpc accepted = 9;
+        DecideRpc decide = 10;
+        ProposalForwardRpc proposal_forward = 11;
+        CompactionRpc compaction = 12;
+        CompactionRpc forward_compaction = 13;
+        AcceptStopSignRpc accept_stop_sign = 14;
+        AcceptedStopSignRpc accepted_stop_sign = 15;
+        DecideStopSignRpc decide_stop_sign = 16;
+    }
+}
+
+service RPC {
+    rpc Execute(Query) returns (QueryResults);
+    rpc Blemessage(BleMessageRpc) returns (Void);
+    rpc Spmessage(PaxosMsgRpc) returns (Void);
+}

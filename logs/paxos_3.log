@@ -1,0 +1,9 @@
+May 14 10:01:41.481 INFO Ballot Leader Election componentMay 14 10:02:12.637 DEBG Newly elected leader: Ballot { n: 0, priority: 0, pid: 0 }
+May 14 10:02:28.400 DEBG Newly elected leader: Ballot { n: 0, priority: 0, pid: 3 }
+May 14 10:02:28.411 DEBG Handling promise from 2 in Prepare phase
+May 14 10:02:28.417 DEBG Self role Leader, phase Accept. Incoming message Promise Accept from 1
+May 14 10:02:44.072 DEBG Newly elected leader: Ballot { n: 1, priority: 0, pid: 1 }
+ 0, pid: 2 }, true), (Ballot { n: 0, priority: 0, pid: 1 }, true)]
+May 14 10:02:28.421 DEBG BLE 3, New Leader elected: Ballot { n: 0, priority: 0, pid: 3 }
+May 14 10:02:44.045 DEBG Received a majority of heartbeats [(Ballot { n: 1, priority: 0, pid: 1 }, true), (Ballot { n: 0, priority: 0, pid: 2 }, true)]
+May 14 10:02:44.056 DEBG BLE 3, New Leader elected: Ballot { n: 1, priority: 0, pid: 1 }
